@@ -53,6 +53,7 @@ public class FrenchCheck {
         eq("Pour vous", Ui.tr("Para você", "For You"));
         eq("Unmapped brand name", French.text("Unmapped brand name"));
         eq("Effacer", French.text("Clear"));
+        eq("Sons de navigation", Ui.tr("Sons de navegação", "Navigation sounds"));
         eq("N° 2 des séries du jour", French.text("No. 2 in shows today"));
         eq("il y a 1 jour", French.text("1 days ago"));
         eq("il y a 2 jours", French.text("2 days ago"));

@@ -6,6 +6,7 @@ final class French {
 
     static String text(String english) {
         switch (english) {
+            case "Navigation sounds": return "Sons de navigation";
             case "Live TV": return "TV en direct";
             case "All Apps": return "Toutes les applications";
             case "Settings": return "Paramètres";

@@ -88,6 +88,9 @@ final class Prefs {
     static boolean weather() { return sp().getBoolean("weather", true); }
     static void setWeather(boolean on) { put("weather", on); }
 
+    static boolean navigationSounds() { return sp().getBoolean("navigation_sounds", true); }
+    static void setNavigationSounds(boolean on) { put("navigation_sounds", on); }
+
     static boolean quotes() { return sp().getBoolean("quotes", Config.SHOW_CRYPTO); }
     static void setQuotes(boolean on) { put("quotes", on); }
 

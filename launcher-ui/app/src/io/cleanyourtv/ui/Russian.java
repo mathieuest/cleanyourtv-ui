@@ -13,6 +13,7 @@ final class Russian {
 
     static String text(String english) {
         switch (english) {
+            case "Navigation sounds": return "Звуки навигации";
             case "Live TV": return "Телеканалы";
             case "All Apps": return "Приложения";
             case "Settings": return "Настройки";

@@ -17,6 +17,7 @@
   "theme": "auto",
   "temperature": "C",
   "weather": true,
+  "navigation_sounds": true,
   "buttons": {
     "s395": "tmdb:watchlist",
     "s204": "tmdb:explore",

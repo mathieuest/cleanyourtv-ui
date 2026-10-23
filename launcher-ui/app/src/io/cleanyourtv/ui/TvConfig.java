@@ -79,6 +79,7 @@ final class TvConfig {
             if (o.has("theme")) Prefs.setTheme(o.getString("theme"));
             if (o.has("temperature")) Prefs.setTemperature(o.getString("temperature"));
             if (o.has("weather")) Prefs.setWeather(o.getBoolean("weather"));
+            if (o.has("navigation_sounds")) Prefs.setNavigationSounds(o.getBoolean("navigation_sounds"));
             JSONObject buttons = o.optJSONObject("buttons");
             if (buttons != null) {
                 for (java.util.Iterator<String> it = buttons.keys(); it.hasNext(); ) {

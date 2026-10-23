@@ -111,6 +111,9 @@ TV. The debloat, the supported TVs and how to go back are in [CleanYourTV's READ
 4. Optional: `TV_HOST=… launcher-ui/config.sh my-config.json` (see `launcher-ui/config.example.json`) and
    `launcher-ui/config.sh --remote examples/<model>/remote.json`.
 
+In **Settings → Home Settings → Navigation sounds**, turn off the clicks played when moving or opening a tile.
+The setting takes effect immediately and is remembered. A pushed config can set `"navigation_sounds": false`.
+
 The remote action `apps` opens this launcher's **All Apps** panel, the same one as the Shortcuts tile. To verify the
 destination over ADB, run `am start -n io.cleanyourtv.ui/.HomeActivity --es open apps`. This adds a destination for
 configurable buttons; it does not override a physical button that Android reserves for a system launcher. Some TVs
