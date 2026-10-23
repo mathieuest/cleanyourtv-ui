@@ -111,6 +111,12 @@ TV. The debloat, the supported TVs and how to go back are in [CleanYourTV's READ
 4. Optional: `TV_HOST=… launcher-ui/config.sh my-config.json` (see `launcher-ui/config.example.json`) and
    `launcher-ui/config.sh --remote examples/<model>/remote.json`.
 
+The remote action `apps` opens this launcher's **All Apps** panel, the same one as the Shortcuts tile. To verify the
+destination over ADB, run `am start -n io.cleanyourtv.ui/.HomeActivity --es open apps`. This adds a destination for
+configurable buttons; it does not override a physical button that Android reserves for a system launcher. Some TVs
+lose continuous volume adjustment when an accessibility service filters keys: verify the real remote before enabling one.
+
+
 The script keeps the original's safeguards: it checks Android before building, starts the new Home before touching the
 old one, and undoes the switch if it doesn't take. To open Explore from the computer:
 `adb shell am start -n io.cleanyourtv.ui/.HomeActivity --es open explore` (or `--es open watchlist`).

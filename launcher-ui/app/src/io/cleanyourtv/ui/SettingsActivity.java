@@ -542,6 +542,7 @@ public class SettingsActivity extends Activity {
             String[][] special = {
                 {"", Ui.tr("Padrão da TV", "The TV's own")},
                 {"home", Ui.tr("Início", "Home screen")},
+                {"apps", Ui.tr("Todos os Apps", "All Apps")},
                 {"tmdb:explore", Ui.tr("Explorar filmes e séries", "Explore movies and shows")},
                 {"tmdb:watchlist", Ui.tr("Minha lista (TMDB)", "My watchlist (TMDB)")},
                 {"live", Ui.tr("TV ao vivo", "Live TV")},

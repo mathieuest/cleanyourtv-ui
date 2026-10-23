@@ -22,7 +22,7 @@ import java.util.List;
  * "native" button is never touched, a "configurable" one runs the action the person picked in Settings > Remote
  * Buttons, or its default. Without remote.json, TCL and Vestel TVs keep the app buttons Free My TV handled.
  *
- * Actions: a package, "input:<tv input id>", "live", "settings", "home", "tmdb:explore", "tmdb:watchlist", or ""
+ * Actions: a package, "input:<tv input id>", "live", "settings", "home", "apps", "tmdb:explore", "tmdb:watchlist", or ""
  * (the button does what it did before).
  */
 final class RemoteKeys {
@@ -130,6 +130,9 @@ final class RemoteKeys {
 
     static Intent intent(Context c, String action) {
         switch (action) {
+            case "apps":
+                return new Intent(c, HomeActivity.class).putExtra("open", "apps")
+                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
             case "home":
                 return new Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_HOME).setPackage(c.getPackageName());
             case "settings":

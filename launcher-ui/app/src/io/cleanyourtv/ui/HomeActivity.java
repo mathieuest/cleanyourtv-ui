@@ -19,7 +19,6 @@ public class HomeActivity extends Activity {
         home = new HomeView(this);
         setContentView(home);
         getWindow().setBackgroundDrawable(null);
-        openFrom(getIntent());
     }
 
     @Override protected void onResume() {
@@ -32,6 +31,8 @@ public class HomeActivity extends Activity {
             return;
         }
         if (home != null) home.resume();
+        // resume() closes an old sheet: consume the requested destination afterwards, including on cold starts.
+        openFrom(getIntent());
     }
 
     @Override protected void onPause() {
@@ -42,16 +43,17 @@ public class HomeActivity extends Activity {
     /** Home button pressed on the home screen: back to the entry state (focus on the first app, sheet closed). */
     @Override protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
+        setIntent(intent);
         if (home != null) home.reset(true);
-        openFrom(intent);
     }
 
-    /** `--es open explore|watchlist`: Explore from the computer (adb), as the remote's buttons open it. */
+    /** `--es open apps|explore|watchlist`: open an existing destination from a remote action or adb. */
     private void openFrom(Intent intent) {
         String what = intent == null ? null : intent.getStringExtra("open");
         if (what == null) return;
         intent.removeExtra("open");
-        if (what.equals("explore")) RemoteKeys.run(this, "tmdb:explore");
+        if (what.equals("apps")) home.openSheet();
+        else if (what.equals("explore")) RemoteKeys.run(this, "tmdb:explore");
         else if (what.equals("watchlist")) RemoteKeys.run(this, "tmdb:watchlist");
     }
 

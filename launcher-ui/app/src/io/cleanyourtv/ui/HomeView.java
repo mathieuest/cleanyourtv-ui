@@ -211,6 +211,7 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
 
     // "All Apps" sheet
     private List<HomeApps.Item> others = new ArrayList<>();
+    private boolean othersLoaded;
     private Spring[] gridFocus = new Spring[0];
     private String[] gridLabels;
     private final Spring sheet = new Spring(0.38f, 0.9f, 0);
@@ -1726,15 +1727,17 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
 
     private void setOthers(List<HomeApps.Item> list) {
         others = list;
+        othersLoaded = true;
         gridFocus = new Spring[list.size()];
         for (int i = 0; i < gridFocus.length; i++) gridFocus[i] = new Spring(0.3f, 0.82f, 0);
         gridLabels = null;
         gridIndex = Math.min(gridIndex, Math.max(0, list.size() - 1));
         retargetGrid(true);
         gridDirty = true;
+        if (sheetOpen) sheetLayer.invalidate();
     }
 
-    private void openSheet() {
+    void openSheet() {
         sheetOpen = true;
         gridIndex = 0;
         scroll.snap(0);
@@ -1906,7 +1909,9 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
                 setShelf(s);
                 setStatusItems(st);
                 setDrawerItems(d);
-                if (!sheetOpen) setOthers(o);
+                // A direct Apps intent can open the sheet before its first asynchronous load finishes.
+                // Later refreshes still leave an open grid stable while the person navigates it.
+                if (!sheetOpen || !othersLoaded) setOthers(o);
             });
         });
     }
