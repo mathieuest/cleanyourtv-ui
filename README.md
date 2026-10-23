@@ -26,7 +26,7 @@ a workflow brings in CleanYourTV's changes every day ([`sync-upstream.yml`](.git
 | "Watch on…" | — | Opens the app | Opens **the title** in the app (Netflix, Disney+, Apple TV, Max, Prime) when Wikidata knows its id |
 | Remote buttons | `app_keys` in a theme | — | A `remote.json` per model + a settings screen on the TV |
 | Configuration | The theme's `config.json` | Settings on the TV | A `config.json` pushed from the computer + settings on the TV |
-| Language | English | Several | English and Portuguese, plus Spanish, German and Russian; follows the TV |
+| Language | English | Several | English and Portuguese, plus Spanish, German, Russian and French; follows the TV |
 | Cost for an AI assistant to adapt | Low | Medium | **Higher**: more code, network and screens, more tokens |
 
 Just want a clean TV and a minimal home? Use CleanYourTV's `launcher/`. Want the home screen without the debloat? Use
@@ -100,6 +100,8 @@ TV. The debloat, the supported TVs and how to go back are in [CleanYourTV's READ
    ```
    `config.properties` stays out of git. The key belongs to the app and is still needed with the QR sign-in: signing in
    only tells TMDB who you are, for your list and ratings. `language=auto` follows the TV's language.
+   French is selected automatically on a French TV, or explicitly with `language=fr`. It includes the home screen,
+   settings, weather, screensaver and TMDB requests (`fr-FR`, when TMDB has a translation).
 3. Build and install (JDK 17 and the Android SDK with build-tools 34+ and platform android-34; no Gradle):
    ```bash
    TV_HOST=192.168.1.50 KEY_SERVICE=1 launcher-ui/build-and-install.sh

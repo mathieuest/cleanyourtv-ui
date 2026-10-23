@@ -352,7 +352,7 @@ public class DetailActivity extends Activity {
             JSONObject w = list.optJSONObject(i);
             String word = w.optString("name");
             int wid = w.optInt("id");
-            line.addView(TvUi.button(this, k, word, v -> GridActivity.open(this, Ui.tr("Com o tema “", "Tagged “") + word + "”",
+            line.addView(TvUi.button(this, k, word, v -> GridActivity.open(this, Ui.tr("Com o tema “", "Tagged “") + word + (Ui.fr ? " »" : "”"),
                     "/discover/" + kind + "?with_keywords=" + wid + "&sort_by=popularity.desc", kind)));
         }
         return line;
